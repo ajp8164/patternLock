@@ -7,24 +7,24 @@ Implementations are included for both jQuery and AngularJS.
 
 ## Use with jQuery
 
-Include jquery and patternLock.js and patternLock.css in your page.
+Include jquery and pattern-lock.js and pattern-lock.css in your page.
 
 ```sh
-<link href="patternLock.css" rel="stylesheet" type="text/css" />
+<link href="pattern-lock.css" rel="stylesheet" type="text/css" />
 <script src="jquery.js"></script>
-<script src="patternLock.js"><;/script>;
+<script src="pattern-lock.js"></script>
 ```
 
 Include an identified HTML component in your page.
 
 ```sh
-<div id="#patternContainer"></div>
+<div id="#pattern-container"></div>
 ```
 
 Initialize pattern lock to obtain the object.
 
 ```sh
-var lock = new PatternLock("#patternContainer");
+var lock = new PatternLock("#pattern-container");
 ```
 
 ## Use with AngularJS
@@ -33,8 +33,8 @@ This implementation presents the pattern lock as an angular directive, `<pattern
 Include angularPatternLock.js and patternLock.css to your page.
 
 ```sh
-<link href="patternLock.css" rel="stylesheet" type="text/css" />
-<script src="angularPatternLock.js"></script>
+<link href="pattern-lock.css" rel="stylesheet" type="text/css" />
+<script src="angular-pattern-lock.js"></script>
 ```
 
 Include the module `angular-pattern-lock` in your app.
