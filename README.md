@@ -1,56 +1,92 @@
 patternLock
 ===========
 
-A light weight plugin to simulate android like pattern lock mechanism for your hybrid app or for a website. It's easy to configure and style so you can have different type of pattern lock according to your need. Is also provide some methods to use this plugin securely.
+A light weight plugin to simulate android like pattern lock mechanism for your hybrid app or for a website. It's easy to configure and style so you can have different types of pattern lock according to your need.
+
 This repository includes implementations for both jQuery and AngularJS.
 
-<strong>jQuery - How to use?</strong><br>
-Include jquery and patternLock.js and patternLock.css to your page.
-<pre class="brush: xml;">
-&lt;link href=&quot;patternLock.css&quot;  rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
-&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;patternLock.js&quot;&gt;&lt;/script&gt;
-</pre>
-Than with simple initialization you have your pattern lock.
-<pre class="brush: js;">
+##Use with jQuery
+
+Include jquery and patternLock.js and patternLock.css in your page.
+
+```sh
+<link href="patternLock.css" rel="stylesheet" type="text/css" />
+<script src="jquery.js"></script>
+<script src="patternLock.js"><;/script>;
+```
+
+Include an identified HTML component in your page.
+
+```sh
+<div id="#patternContainer"></div>
+```
+
+Initialize pattern lock to obtain the object.
+
+```sh
 var lock = new PatternLock("#patternContainer");
-</pre>
-<br/>
-<strong>AngularJS - How to use?</strong><br>
-This implementation presents the pattern lock as an angular directive, `pattern-lock`. JQuery is not needed, the directive makes use of AngularJS's JQLite.
+```
+
+##Use with AngularJS
+
+This implementation presents the pattern lock as an angular directive, `<pattern-lock>`. JQuery is not needed, the directive makes use of AngularJS's JQLite.
 Include angularPatternLock.js and patternLock.css to your page.
-<pre class="brush: xml;">
-&lt;link href=&quot;patternLock.css&quot;  rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
-&lt;script src=&quot;angularPatternLock.js&quot;&gt;&lt;/script&gt;
-</pre>
-Include the module `angular-pattern-lock` in your app and include the directive in your HTML. Your `on-init` function will receive the pattern lock object as `lock`. Add each option as an attribute.
-<pre class="brush: js;">
+
+```sh
+<link href="patternLock.css" rel="stylesheet" type="text/css" />
+<script src="angularPatternLock.js"></script>
+```
+
+Include the module `angular-pattern-lock` in your app.
+
+```sh
+angular.module('myApp', ['angular-pattern-lock', ...]);
+```
+
+Include the directive in your HTML. Your `on-init` function will receive the pattern lock object as `lock`. Add each pattern lock option as an attribute.
+
+```sh
 <pattern-lock on-init="myLockInit(lock)" on-draw="myOnDraw" matrix="[4,4]"></pattern-lock>
-</pre>
-<br/>
+```
 
-Check demo and documentation on <a href="http://ignitersworld.com/lab/patternLock.html">http://ignitersworld.com/lab/patternLock.html</a>
+In your controller create the callback for handling `on-init` and `on-draw` events.
 
-<h3>Major updates</h3>
+```sh
+var patternLock;
+$scope.myLockInit = function(lock) {
+	// lock is the pattern lock object on which methods may be called; e.g., lock.disable()
+	patternLock = lock;
+}
 
-<strong>v1.0.2</strong>
+$scope.myOnDraw = function(pattern) {
+	// pattern is the string value drawn
+}
+```
+
+##Demo
+
+Check the demo and documentation at <a href="http://ignitersworld.com/lab/patternLock.html">http://ignitersworld.com/lab/patternLock.html</a>
+
+##Major updates
+
+###v1.0.2
 - Added angular directive implementation.
 
-<strong>v1.0.1</strong>
+###v1.0.1
 - Added a option to allow repeating over dots.
 - Added on npm.
 - Fixed setPattern bug for larger matrix.
 - Fixed invalid pattern #15, #3
 - Fixed direction classes issue while directly moving to non near dots.
 
-<strong>v0.6.0</strong>
+###v0.6.0
 - UMD (AMD, CommonJS) support.
 
-<strong>v0.5.0</strong>
+###v0.5.0
 - Added directional classes, dir, n,s,e,w,n-e,n-w,s-e,s-w.
 
-<strong>v0.4.0</strong>
+###v0.4.0
 - Added setPattern, disable, enable methods.
 
-<strong>v0.3.0</strong>
+###v0.3.0
 - Fixed patternlock support on devices having both mouse and touch input.
